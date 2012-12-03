@@ -30,7 +30,7 @@ void MatrixGraph::addEdge(NodeID u, NodeID v, EdgeWeight weight){
 	if(0<= u && u < M.size() && 0 <= v && v < M.size()){
 		if(u != v){
 			if(weight > 0 ){
-				if(M[u][v] == M[v][u]){
+				if(M[u][v] == weight && M[v][u] == weight){
 					return;
 				}
 				else{
