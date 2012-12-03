@@ -102,14 +102,15 @@ int main(int argc, char** argv) {
   srand(1);
 
   // Apply each of the Tester methods to your MatrixGraph class.
-  Tester T1(true);
-  T1.test_all();
+  //Tester T1(true);
+  //T1.test_all();
 
+  
+  // Apply each of the Tester methods to your ListGraph class.
+  Tester T2(false);
+  T2.test_all();
   cout << endl;
   system("pause");
-  // Apply each of the Tester methods to your ListGraph class.
-  //Tester T2(false);
-  //T2.test_all();
 
   /********************************
    * The following section is commented out so you can test your graph code

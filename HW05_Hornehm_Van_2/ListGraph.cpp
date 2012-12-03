@@ -3,7 +3,7 @@
 //Constructor from CSE 274
 ListGraph::ListGraph(int numNodes){
 	edgeList.resize(numNodes);
-	//num_edges = 0;
+	num_edges = 0;
 }
 
 //Destructor for ListGraph
