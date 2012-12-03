@@ -1,6 +1,8 @@
 #include "MatrixGraph.h"
 
 //Need to assign values to each node in the vector of vectors. Making the value 0 means there is no edge.
+//	Implemented from Traveling_Salesman_Harmonbc @Harmonbc
+//
 MatrixGraph::MatrixGraph(unsigned num_nodes){
 	M.resize(num_nodes);
 	for(int i = 0; i < num_nodes; i++){

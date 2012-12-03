@@ -31,7 +31,7 @@ void ListGraph::addEdge(NodeID u, NodeID v, EdgeWeight weight){
 				}
 			}
 }
-//Code from CSE 274
+//Code from Brinkman's CSE 274
 EdgeWeight ListGraph::weight(NodeID u, NodeID v) const{
 	edgeList[u];
 	EList::const_iterator it;
@@ -44,7 +44,7 @@ EdgeWeight ListGraph::weight(NodeID u, NodeID v) const{
 	return 0;
 }
 
-//Code from CSE 274
+//Code from Brinkman's CSE 274
 std::list<NWPair> ListGraph::getAdj(NodeID u) const{
 	return edgeList[u];
 }
