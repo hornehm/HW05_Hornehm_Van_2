@@ -15,36 +15,54 @@
  *     G is undirected.
  *     Every pair of nodes u,v  (u != v) has an edge connecting the of weight > 0.
  */
+using namespace std;
+int* bestTour;
+std::vector<NodeID> bestTourVec;
+double bestTourLength;
+EdgeWeight currentTourLength;
+
+	
+
 
 std::pair<std::vector<NodeID>, EdgeWeight> TSP(Graph* G){
-	std::vector<NodeID> cur;
-	return tour(cur.resize(G->size()), cur.size(), 0, G);
+	bestTour = new int[G->size()];
+	int size = G->size();
+	for(int i = 0;i<size;i++){
+		bestTour[i] = i;
+		bestTourVec.push_back(i);
+	}
+	tour(bestTour, size, 1, G);
+	return std::pair<std::vector<NodeID>,EdgeWeight> (bestTourVec,bestTourLength);
 }
 
 //The following code was implemented from Brinkman's CSE 274 class
-std::pair<std::vector<NodeID>, EdgeWeight> tour(std::vector<NodeID> cur, int n, int startingPt, Graph* G){
+void tour(int* cur, int n, int startingPt, Graph* G){
+	
 	if(n-startingPt == 1){
-		for(int i = 0; i < n; i++){
+		currentTourLength = 0;
+		for(int i = 0; i < n-1; i++){
 			currentTourLength += G->weight(cur[i], cur[i+1]);
 		}
 		if(currentTourLength < bestTourLength){
 			bestTourLength = currentTourLength;
-			bestTour = cur;
+			int size = G->size();
+			for(int i = 0; i < size; i++){
+				bestTourVec[i] = cur[i];
+			}
 		}
 	}
 	else{
-		for(int i = 0; i < n; i++){
+		for(int i = startingPt; i < n; i++){
 			swap(cur, cur[startingPt], cur[i]);
-			tour(cur, n, startingPt+1);
+			tour(cur, n, startingPt+1, G);
 			swap(cur, cur[startingPt], cur[i]);
 		}
-	}
-	return NWPair(bestTour, bestTourLength);
+}
 }
 
-void swap(std::vector<NodeID> cur, int a, int b){
-	int tmp = cur[a];
-	cur[a] = cur[b];
-	cur[b] = tmp;
 
+void swap(int* cur, int a, int b){
+	int temp = cur[a];
+	cur[a] = cur[b];
+	cur[b] = cur[a];
 }
