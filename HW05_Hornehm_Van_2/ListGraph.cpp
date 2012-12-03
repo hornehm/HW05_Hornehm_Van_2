@@ -20,14 +20,11 @@ void ListGraph::addEdge(NodeID u, NodeID v, EdgeWeight weight){
 	if( 0 <= u < edgeList.size() && 0 <= v < edgeList.size()){
 		if(u != v){
 			if(weight > 0){
-				for(it = edgeList[u].begin(); it !=edgeList[u].end(); it++){
-					if(edgeList[u]->first == v && edgeList[u]->second == weight){
-						return false;
+				
 					}
 				}
 			}
 		}
-	}
 	edgeList[u].push_back(NWPair(v,weight));
 	edgeList[v].push_back(NWPair(u, weight));
 	num_edges++;

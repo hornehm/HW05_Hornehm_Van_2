@@ -16,11 +16,11 @@ MatrixGraph::MatrixGraph(unsigned num_nodes){
    *     weight > 0
    */
 void MatrixGraph::addEdge(NodeID u, NodeID v, EdgeWeight weight){
-	if(0<= u < M.size() && 0 <= v < M.size()){
+	if(0<= u && u < M.size() && 0 <= v && v < M.size()){
 		if(u != v){
 			if(weight > 0 ){
 				if(M[u][v] == M[v][u]){
-					return false;
+					return;
 				}
 				else{
 				M[u][v] = weight;
@@ -37,8 +37,19 @@ EdgeWeight MatrixGraph::weight(NodeID u, NodeID v) const{
 	return M[u][v];
 }
 
+/*
+*Finds adjacents to the certain node, u
+*
+*
+*/
 std::list<NWPair> MatrixGraph::getAdj(NodeID u) const{
-
+	std::list<NWPair> adj;
+	for(int i = 0; i < M[u].size();i++){
+		if(M[u][i] != 0){
+			adj.push_back(NWPair(i, M[u][i]));
+		}
+	}
+	return adj;
 	
 }
 
