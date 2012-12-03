@@ -20,4 +20,9 @@
  *     Every pair of nodes u,v  (u != v) has an edge connecting the of weight > 0.
  */
 
+std::vector<NodeID> bestTour;
+double* bestTourLength;
+double* currentTourLength;
+
 std::pair<std::vector<NodeID>, EdgeWeight> TSP(Graph* G);
+std::pair<std::vector<NodeID>, EdgeWeight> tour(vector<NodeID> cur, int n, int startingPt, Graph* G);
