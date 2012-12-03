@@ -15,7 +15,7 @@
  *     G is undirected.
  *     Every pair of nodes u,v  (u != v) has an edge connecting the of weight > 0.
  */
-using namespace std;
+
 int* bestTour;
 std::vector<NodeID> bestTourVec;
 double bestTourLength;
@@ -26,12 +26,12 @@ EdgeWeight currentTourLength;
 
 std::pair<std::vector<NodeID>, EdgeWeight> TSP(Graph* G){
 	bestTour = new int[G->size()];
-	int size = G->size();
-	for(int i = 0;i<size;i++){
+	for(int i = 0;i<G->size();i++){
+		//Implemented from HW05Gaydads @gaydads
 		bestTour[i] = i;
 		bestTourVec.push_back(i);
 	}
-	tour(bestTour, size, 1, G);
+	tour(bestTour, G->size(), 0, G);
 	return std::pair<std::vector<NodeID>,EdgeWeight> (bestTourVec,bestTourLength);
 }
 
@@ -45,13 +45,22 @@ void tour(int* cur, int n, int startingPt, Graph* G){
 		}
 		if(currentTourLength < bestTourLength){
 			bestTourLength = currentTourLength;
-			int size = G->size();
-			for(int i = 0; i < size; i++){
+			for(int i = 0; i < n; i++){
 				bestTourVec[i] = cur[i];
 			}
 		}
 	}
 	else{
+		currentTourLength = 0;
+		for(int i = 0; i < n-1;i++){
+			currentTourLength += G->weight(cur[i], cur[i+1]);
+		}
+		if(currentTourLength < bestTourLength){
+			bestTourLength = currentTourLength;
+			for(int i = 0; i < n; i++){
+				bestTourVec[i] = cur[i];
+			}
+		}
 		for(int i = startingPt; i < n; i++){
 			swap(cur, cur[startingPt], cur[i]);
 			tour(cur, n, startingPt+1, G);
