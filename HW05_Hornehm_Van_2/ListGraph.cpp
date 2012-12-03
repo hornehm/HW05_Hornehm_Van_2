@@ -1,5 +1,11 @@
 #include "ListGraph.h"
 
+/*
+*@author: Heather Horne
+*
+*ListGraph Implementation
+*/
+
 //Constructor from CSE 274
 ListGraph::ListGraph(int numNodes){
 	edgeList.resize(numNodes);

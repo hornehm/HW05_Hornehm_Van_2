@@ -1,5 +1,11 @@
 #include "MatrixGraph.h"
 
+/*
+*@author: Heather Horne
+*
+*MatrixGraph implementation
+*/
+
 //Need to assign values to each node in the vector of vectors. Making the value 0 means there is no edge.
 //	Implemented from Traveling_Salesman_Harmonbc @Harmonbc
 //
@@ -70,12 +76,10 @@ unsigned MatrixGraph::degree(NodeID u) const{
 	return M[u].size();
 }
 
-//Again, guessing
 unsigned MatrixGraph::size() const{
 	return M.size();
 }
 
-//guessing again
 unsigned MatrixGraph::numEdges() const{
 	return num_edges;
 }

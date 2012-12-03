@@ -36,6 +36,8 @@ std::pair<std::vector<NodeID>, EdgeWeight> TSP(Graph* G){
 }
 
 //The following code was implemented from Brinkman's CSE 274 class
+// However, I struggled with getting it to find the best tour. It
+// does compile though.
 void tour(int* cur, int n, int startingPt, Graph* G){
 	
 	if(n-startingPt == 1){
