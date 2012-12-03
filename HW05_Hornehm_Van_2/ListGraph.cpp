@@ -6,6 +6,11 @@ ListGraph::ListGraph(int numNodes){
 	//num_edges = 0;
 }
 
+//Destructor for ListGraph
+ListGraph::~ListGraph(){
+
+}
+
 /*
    * Add a weighted, undirected edge between nodes u and v.
    * 
@@ -16,18 +21,15 @@ ListGraph::ListGraph(int numNodes){
    *     weight > 0
    */
 void ListGraph::addEdge(NodeID u, NodeID v, EdgeWeight weight){
-	Elist::const_iterator it;
-	if( 0 <= u < edgeList.size() && 0 <= v < edgeList.size()){
+	if( 0 <= u && u < edgeList.size() && 0 <= v && v < edgeList.size()){
 		if(u != v){
 			if(weight > 0){
-				
+				edgeList[u].push_back(NWPair(v, weight));
+				edgeList[v].push_back(NWPair(u, weight));
+				num_edges++;
 					}
 				}
 			}
-		}
-	edgeList[u].push_back(NWPair(v,weight));
-	edgeList[v].push_back(NWPair(u, weight));
-	num_edges++;
 }
 //Code from CSE 274
 EdgeWeight ListGraph::weight(NodeID u, NodeID v) const{
@@ -39,6 +41,7 @@ EdgeWeight ListGraph::weight(NodeID u, NodeID v) const{
 			return theEdge.second;
 		}
 	}
+	return 0;
 }
 
 //Code from CSE 274

@@ -37,6 +37,7 @@ vector<NodeID> randNodeList(int n) {
 
 Graph* Tester::createGraph(int n) {
   Graph* G;
+  matrix_graph = true;
   if (matrix_graph)
     G = new MatrixGraph(n);
   else

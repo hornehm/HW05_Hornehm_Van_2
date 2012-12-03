@@ -6,6 +6,11 @@ MatrixGraph::MatrixGraph(unsigned num_nodes){
 	num_edges = 0;
 }
 
+//Destructor for MatrixGraph
+MatrixGraph::~MatrixGraph(){
+
+}
+
 /*
    * Add a weighted, undirected edge between nodes u and v.
    * 
